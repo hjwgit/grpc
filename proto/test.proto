@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package test;
+
+service Test {
+    
+    rpc TestFunc(Req) returns (Res) {}
+
+    rpc ResStream(Req) returns (stream Res) {}
+
+    rpc ReqStream(stream Req) returns (Res) {}
+
+    rpc StreamFunc(stream Req) returns (stream Res) {}
+}
+
+message Req {
+    // The id of request
+    string reqId = 1;
+    // The content of request
+    string reqBody = 2;
+}
+
+message Res {
+    string resId = 1;
+    string resToReq = 2;
+    string resBody = 3;
+}
